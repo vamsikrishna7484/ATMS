@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Triggering Bootstrap 4 Popovers on Hover</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+	.bs-example{
+    	margin: 150px 50px;
+    }
+    .feedback{
+        position:fixed;
+        bottom:50px;
+        right:50px;
+
+    }
+</style>
+<script>
+
+
+$(document).ready(function(){
+    $('form label').each(function(index) {
+    // Check if the label is associated with a checkbox
+    if ($(this).find('input[type="checkbox"]').length === 0) {
+      // Add sequence number (index + 1) to the label text
+      $(this).text((index + 1) + '. ' + $(this).text());
+    }
+  });
+
+    $('[data-toggle="popover"]').popover({
+        placement : 'top',
+        trigger: 'hover'
+    });
+    $('button').hover(function(){
+        $(this).attr('data-content','none from hover method');
+    })
+    $(".feedback>button").click(function(){
+        $(".feedbackform").toggleClass('d-none')
+    });
+});
+</script>
+</head>
+<body>
+<div class="bs-example">
+    <input type="checkbox" name="ai" id="ai"/>
+    <label for="ai">label checkbox</label>
+    <div class="popover-demo mb-2">
+        <button type="button" class="btn btn-primary" data-toggle="popover" title="Popover title" >Popover</button>
+        <button type="button" class="btn btn-success" data-toggle="popover" title="Popover title" >Another popover</button>
+        <button type="button" class="btn btn-info" data-toggle="popover" title="Popover title" >Large popover</button>
+        <button type="button" class="btn btn-warning" data-toggle="popover" title="Popover title" data-content="The last popover!">Last popover</button>
+    </div>
+    <div class="feedback">
+        <form class="feedbackform d-none">
+            <label for="feedarea">
+
+            </label>
+            <textarea rows="2" id="feedarea" name="feedarea" ></textarea>
+            <button type="submit">submit</button>
+        </form>
+        <button>give feedback</button>
+    </div>
+	<p><strong>Note:</strong> Click on the buttons to show/hide the popover.</p>
+
+
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name">
+      
+        <label for="email">Email:</label>
+        <input type="email" id="email">
+      
+        <label for="subscribe">Subscribe:</label>
+        <input type="checkbox" id="subscribe">
+      
+        <label for="message">Message:</label>
+        <textarea id="message"></textarea>
+      
+        <label for="terms">Accept Terms:</label>
+        <input type="checkbox" id="terms">
+      
+        <button type="submit">Submit</button>
+      </form>
+      
+</div>
+</body>
+</html>
