@@ -64,9 +64,5 @@ b{
   display:none;
 
 }
-[for='image']{
-  font-weight: bold;
-  margin-top:20px;
-  border-bottom:2px solid gray;
-}
+
 

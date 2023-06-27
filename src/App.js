@@ -7,7 +7,7 @@ import { useState,useEffect } from 'react';
 import {Provider,useSelector} from 'react-redux'
 import store from './Redux/user/store';
 import React from 'react'
-import { LogInPage,SignUp } from './components';
+import { LogInPage,SignUp,Home } from './components';
 import { Login } from '@mui/icons-material';
 
 
@@ -17,6 +17,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LogInPage/>}/>
         <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/Home' element ={<Home/>}/>
       </Routes>
     </BrowserRouter>
   )
